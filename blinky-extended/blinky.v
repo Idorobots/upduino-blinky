@@ -11,7 +11,7 @@ module blinky (output wire led_blue,
   always @(posedge clk)
     counter <= counter + 1;
 
-  SB_RGBA_DRV RGB_DRIVER (
+  SB_RGBA_DRV rgb (
     .RGBLEDEN (1'b1),
     .RGB0PWM  (counter[N]),
     .RGB1PWM  (counter[N-1]),
@@ -21,8 +21,8 @@ module blinky (output wire led_blue,
     .RGB1     (led_green),
     .RGB2     (led_red)
   );
-  defparam RGB_DRIVER.CURRENT_MODE = "0b1";
-  defparam RGB_DRIVER.RGB0_CURRENT = "0b000001";
-  defparam RGB_DRIVER.RGB1_CURRENT = "0b000001";
-  defparam RGB_DRIVER.RGB2_CURRENT = "0b000001";
+  defparam rgb.CURRENT_MODE = "0b1";
+  defparam rgb.RGB0_CURRENT = "0b000001";
+  defparam rgb.RGB1_CURRENT = "0b000001";
+  defparam rgb.RGB2_CURRENT = "0b000001";
 endmodule
